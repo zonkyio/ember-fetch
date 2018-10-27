@@ -1,7 +1,7 @@
 /* globals define FastBoot */
 (function() {
   define('fetch', ['exports'], function(self) {
-    var AbortControllerPolyfill = FastBoot.require('abortcontroller-polyfill/dist/cjs-ponyfill');
+    var AbortControllerPolyfill = FastBoot.require('abortcontroller-polyfill/dist/cjs-ponyfill.js');
     var nodeFetch = FastBoot.require('node-fetch');
     var abortableFetch = AbortControllerPolyfill.abortableFetch({
       fetch: nodeFetch,
@@ -11,7 +11,7 @@
     self['default'] = abortableFetch.fetch;
     self['Request'] = abortableFetch.Request;
 
-    self['Headers'] = nodeFetch.Headers;    
+    self['Headers'] = nodeFetch.Headers;
     self['Response'] = nodeFetch.Response;
 
     self['AbortController'] = AbortControllerPolyfill.AbortController;
